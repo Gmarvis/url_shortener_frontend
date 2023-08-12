@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;1,400&family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;1,400&display=swap");
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #1a306a;
+  width: 50vw;
+  height: fit-content;
+  margin: 20vh auto;
+}
+
+h3 {
+  text-align: center;
+  font-family: poppins;
+  text-transform: uppercase;
+}
+
+p {
+  text-align: center;
+  font-family: poppins;
+  font-size: 15px;
+}
+
+form {
+  width: 80%;
+  margin: auto;
+  /* background-color: aqua; */
+  flex-direction: row;
+  display: flex;
+  border: 1px solid #1a306a;
+  justify-content: space-between;
+  height: 40px;
+}
+
+form input {
+  width: 80%;
+  margin: auto;
+  height: 33px;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+form button {
+  width: 20%;
+  height: 100%;
+  margin: auto;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #1a306a;
+}
+
+.shortUrl {
+  text-transform: uppercase;
+}
+
+.shortUrl span {
+  color: rgb(11, 49, 199);
+  text-transform: lowercase;
+  margin-left: 5px;
+}
+
+.guideName {
+  text-align: center;
+}
+
+@media screen and (max-width: 770px) {
+  .formContainer {
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .formContainer {
+    width: 95vw;
+  }
+
+  .shortUrl span {
+    font-size: 12px;
+  }
+}
