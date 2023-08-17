@@ -37,6 +37,7 @@ form input {
   margin: auto;
   height: 33px;
   background: none;
+  border: none;
   outline: none;
 }
 
@@ -48,6 +49,13 @@ form button {
   text-transform: uppercase;
   color: #fff;
   background-color: #1a306a;
+  transition: .3s ease-in-out;
+}
+
+form button:hover {
+  cursor: pointer;
+  background-color: #121d3d;
+
 }
 
 .shortUrl {

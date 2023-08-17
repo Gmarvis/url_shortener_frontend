@@ -3,6 +3,9 @@ import "./home.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const URL = process.env.REACT_APP_BACKEND_URL;
+
+
 // url validator
 
 const validateURL = (url) => {
@@ -44,16 +47,6 @@ const Home = () => {
     });
   };
 
-  // useEffect(() => {
-  //   // update stae variable when each time the value changes
-  //   const timer = setInterval(() => {
-  //     setUrl({ originalUrl: url.originalUrl });
-  //   }, 1000);
-
-  //   return () => {
-  //     clearInterval(timer);
-  //   };
-  // }, [url]);
 
   const handleChange = (e) => {
     setUrl(() => ({ originalUrl: e.target.value }));
@@ -76,7 +69,7 @@ const Home = () => {
 
     console.log(JSON.stringify(url));
 
-    let response = await fetch("http://localhost:6060/api/shorturl", {
+    let response = await fetch(URL, {
       method: "POST",
       body: JSON.stringify(url),
       headers: {
