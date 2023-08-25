@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 
-
 // url validator
 
 const validateURL = (url) => {
@@ -47,7 +46,6 @@ const Home = () => {
     });
   };
 
-
   const handleChange = (e) => {
     setUrl(() => ({ originalUrl: e.target.value }));
   };
@@ -55,7 +53,7 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(url.originalUrl);
+    // console.log(url.originalUrl);
 
     if (!validateURL(url.originalUrl)) {
       notifyFailed();
@@ -67,7 +65,7 @@ const Home = () => {
       return;
     }
 
-    console.log(JSON.stringify(url));
+    // console.log(JSON.stringify(url));
 
     let response = await fetch(URL, {
       method: "POST",
@@ -80,7 +78,7 @@ const Home = () => {
     let data = await response.json();
     setShortUrl(data);
     notifySuccess();
-    console.log(data);
+    // console.log(data);
     setUrl((prev) => ({ originalUrl: "" }));
   };
 
