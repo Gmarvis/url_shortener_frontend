@@ -24,7 +24,6 @@ p {
 form {
   width: 80%;
   margin: auto;
-  /* background-color: aqua; */
   flex-direction: row;
   display: flex;
   border: 1px solid #1a306a;
@@ -49,6 +48,13 @@ form button {
   text-transform: uppercase;
   color: #fff;
   background-color: #1a306a;
+  transition: .3s ease-in-out;
+}
+
+form button:hover {
+  cursor: pointer;
+  background-color: #121d3d;
+
 }
 
 .shortUrl {

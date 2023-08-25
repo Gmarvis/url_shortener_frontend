@@ -3,10 +3,20 @@ import "./home.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const URL = process.env.REACT_APP_BACKEND_URL;
+
+// url validator
+
+const validateURL = (url) => {
+  const regex = /^(https?:\/\/)?([a-zA-Z0-9\-_.]+\.[a-zA-Z]{2,})(\/.*)?$/;
+  return regex.test(url);
+};
+
 const Home = () => {
   const [url, setUrl] = useState({
     originalUrl: "",
   });
+  // const [isValid, setIsValid] = useState(false);
   const [shorturl, setShortUrl] = useState();
 
   // notification
@@ -36,17 +46,28 @@ const Home = () => {
     });
   };
 
+  const handleChange = (e) => {
+    setUrl(() => ({ originalUrl: e.target.value }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // console.log(url.originalUrl);
+
+    if (!validateURL(url.originalUrl)) {
+      notifyFailed();
+      return;
+    }
 
     if (url.originalUrl === "") {
       notifyFailed();
       return;
     }
 
-    console.log(JSON.stringify(url));
+    // console.log(JSON.stringify(url));
 
-    let response = await fetch("http://localhost:5000/api/shorturl", {
+    let response = await fetch(URL, {
       method: "POST",
       body: JSON.stringify(url),
       headers: {
@@ -57,7 +78,7 @@ const Home = () => {
     let data = await response.json();
     setShortUrl(data);
     notifySuccess();
-    console.log(data);
+    // console.log(data);
     setUrl((prev) => ({ originalUrl: "" }));
   };
 
@@ -70,9 +91,7 @@ const Home = () => {
             type="text"
             placeholder="http://yourlongurlexample.com"
             value={url.originalUrl}
-            onChange={(e) =>
-              setUrl((prev) => ({ originalUrl: e.target.value }))
-            }
+            onChange={handleChange}
           />
 
           <button type="submit">post url</button>
